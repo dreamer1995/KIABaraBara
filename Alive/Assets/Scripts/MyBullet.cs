@@ -16,13 +16,4 @@ public class MyBullet : MonoBehaviour
     {
         transform.position += new Vector3(0, 0, speed);
     }
-
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "MyBullet")
-        {
-            Destroy(other.gameObject);
-            Destroy(gameObject);
-        }
-    }
 }
