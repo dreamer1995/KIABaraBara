@@ -36,7 +36,7 @@ public class GridAI : MonoBehaviour
     {
         if(gameController.puzzleMap[i, j] == 0)
         {
-            GetComponent<Renderer>().material.SetColor("_Color", Color.blue);
+            GetComponent<Renderer>().material.SetColor("_Color", new Color(0, 0.627451f, 0.2509804f, 1));
             gameController.puzzleMap[i, j] = 1;
         }
         else
@@ -64,7 +64,8 @@ public class GridAI : MonoBehaviour
             }
             if(equal)
             {
-                gameController.puzzleClear = true;
+                gameController.complete = true;
+                Time.timeScale = 1;
             }
         }
 

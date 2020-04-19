@@ -6,9 +6,11 @@ public class EnemyAI : MonoBehaviour
 {
     public GameObject bullet;
     public float interval;
+    private Player player;
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindWithTag("Player").GetComponent<Player>();
         StartCoroutine(Shoot());
     }
 
@@ -31,6 +33,8 @@ public class EnemyAI : MonoBehaviour
     {
         if (other.tag == "MyBullet")
         {
+            player.HP += 1;
+            player.FreshHP();
             Destroy(other.gameObject);
             Destroy(gameObject);
         }

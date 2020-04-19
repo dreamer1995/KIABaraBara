@@ -5,11 +5,8 @@ Shader "Unlit/GroundShader"
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
-		BounderyX("BounderyX", Float) = 1
-		_BounderyX("_BounderyX", Float) = -1
-		//name("BounderyY", Float) = 1;
-		//name("_BounderyY", Float) = -1;
 		_Color("Color Tint", Color) = (1, 1, 1, 1)
+		_Speed("Speed", float) = 1
     }
     SubShader
     {
@@ -42,9 +39,8 @@ Shader "Unlit/GroundShader"
 
             sampler2D _MainTex;
             float4 _MainTex_ST;
-			float BounderyX;
-			float _BounderyX;
 			fixed4 _Color;
+			float _Speed;
 
             v2f vert (appdata v)
             {
@@ -58,13 +54,7 @@ Shader "Unlit/GroundShader"
 
             fixed4 frag (v2f i) : SV_Target
             {
-				fixed4 col = 0;
-				if (i.worldPos.x > _BounderyX && i.worldPos.x < BounderyX &&
-				i.worldPos.z > _BounderyX && i.worldPos.z < BounderyX)
-				{
-					// sample the texture
-					col = tex2D(_MainTex, i.uv) * _Color;
-				}
+				fixed4 col = col = tex2D(_MainTex, i.uv * fixed2(1, 0.5) - fixed2(0, _Speed * _Time.y)) * _Color;
                 // apply fog
                 UNITY_APPLY_FOG(i.fogCoord, col);
                 return col;
