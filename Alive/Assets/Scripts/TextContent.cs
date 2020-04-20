@@ -21,12 +21,13 @@ public class TextContent : MonoBehaviour
     {
         defaultText = "Our current preoccupation with zombies and vampires is easy to explain. They're two sides of the same coin, addressing our fascination with sex, death and food. They're both undead, they both feed on us, they both pass on some kind of plague and they can both be killed with specialist techniques – a stake through the heart or a disembraining. But they seem to have become polarised. Vampires are the undead of choice for girls, and zombies for boys. Vampires are cool, aloof, beautiful, brooding creatures of the night. Typical moody teenage boys, basically. Zombies are dumb, brutal, ugly and mindlessly violent. Which makes them also like typical teenage boys, I suppose.";
         gameController = cam.GetComponent<GameController>();
-        P = new string[4]
+        P = new string[5]
         {
             "1",
             "2",
             "3",
-            "4"
+            "4",
+            "5"
         };
 
         data1.onClick.AddListener(ToData1);
@@ -52,14 +53,28 @@ public class TextContent : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.W))
         {
             gameController.phaseNow -= 1;
-            gameController.phaseNow = Mathf.Clamp(gameController.phaseNow, 0, 3);
-            GetComponent<Text>().text = P[gameController.phaseNow];
+            gameController.phaseNow = Mathf.Clamp(gameController.phaseNow, 0, 4);
+            if (gameController.phase > gameController.phaseNow)
+            {
+                GetComponent<Text>().text = P[gameController.phaseNow];
+            }
+            else
+            {
+                GetComponent<Text>().text = "???????";
+            }
         }
         if (Input.GetKeyDown(KeyCode.S))
         {
             gameController.phaseNow += 1;
-            gameController.phaseNow = Mathf.Clamp(gameController.phaseNow, 0, 3);
-            GetComponent<Text>().text = P[gameController.phaseNow];
+            gameController.phaseNow = Mathf.Clamp(gameController.phaseNow, 0, 4);
+            if (gameController.phase > gameController.phaseNow)
+            {
+                GetComponent<Text>().text = P[gameController.phaseNow];
+            }
+            else
+            {
+                GetComponent<Text>().text = "???????";
+            }
         }
     }
     public void ToData1()
@@ -111,9 +126,9 @@ public class TextContent : MonoBehaviour
     }
     public void ToData5()
     {
-        if (gameController.phase > 3)
+        if (gameController.phase > 4)
         {
-            GetComponent<Text>().text = P[3];
+            GetComponent<Text>().text = P[4];
         }
         else
         {

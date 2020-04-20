@@ -217,8 +217,8 @@ public class GameController : MonoBehaviour
             Vector3 minPoint = spawnArea1.transform.position - spawnArea1.transform.localScale / 2;
             Vector3 maxPoint = spawnArea1.transform.position + spawnArea1.transform.localScale / 2;
             Vector3 spawnPos = new Vector3 (Random.Range(minPoint.x, maxPoint.x),
-                                            spawnArea1.transform.position.y,
-                                            Random.Range(minPoint.z, maxPoint.z));
+                                            spawnArea1.transform.position.y + 0.02f,
+                                            0.5f);
             Instantiate(laser, spawnPos, Quaternion.identity);
         }
     }

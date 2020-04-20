@@ -18,10 +18,9 @@ public class BlackHoleAI : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "MyBullet")
+        if (other.tag == "MyBullet" || other.tag == "Astro")
         {
             Destroy(other.gameObject);
         }
-
     }
 }

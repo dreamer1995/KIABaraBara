@@ -31,7 +31,7 @@ public class AstroAI : MonoBehaviour
     {
         if (other.tag == "MyBullet")
         {
-            player.HP += 1;
+            player.HP += 0.25f;
             player.FreshHP();
             Destroy(other.gameObject);
             Destroy(gameObject);

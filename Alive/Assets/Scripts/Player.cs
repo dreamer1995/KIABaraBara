@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
     public float bulletPerSecond;
     public GameObject cam;
     private GameController gameController;
-    public int HP;
+    public float HP;
     private bool phaseFlag1;
     private bool phaseFlag2;
     private bool phaseFlag3;
@@ -133,27 +133,29 @@ public class Player : MonoBehaviour
             FreshHP();
             Destroy(other.gameObject);
         }
-        if (other.tag == "BlackHole")
+        if (other.tag == "BlackHole" || other.tag == "Laser")
         {
             //if (time > invincible)
             {
                 time = 0;
-                HP -= 1;
+                HP -= 5;
+                float gap = gameController.phase * 25;
+                HP = Mathf.Max(gap,HP);
                 FreshHP();
             }
         }
     }
-    void ChangeHPColor(int HP)
+    void ChangeHPColor(float HP)
     {
-        if (HP > 99)
+        if (HP > 75)
         {
             uimt.SetColor("_Color", Color.white);
         }
-        else if (HP > 60)
+        else if (HP > 50)
         {
             uimt.SetColor("_Color", Color.green);
         }
-        else if(HP > 30)
+        else if(HP > 25)
         {
             uimt.SetColor("_Color", Color.yellow);
         }
@@ -167,7 +169,7 @@ public class Player : MonoBehaviour
     {
         while(true)
         {
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(0.33f);
             HP += 1;
             FreshHP();
         }

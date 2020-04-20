@@ -7,6 +7,9 @@ TagManager:
   - Enemy
   - Bullet
   - MyBullet
+  - Astro
+  - BlackHole
+  - Laser
   layers:
   - Default
   - TransparentFX

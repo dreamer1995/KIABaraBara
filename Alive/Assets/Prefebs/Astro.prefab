@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8276666812981333115}
   - component: {fileID: 8276666812981333114}
   - component: {fileID: 8276666812981333113}
+  - component: {fileID: -9022546631072920959}
   m_Layer: 0
   m_Name: Astro
   m_TagString: Astro
@@ -91,7 +92,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8276666812981333112}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 4.3, y: 5, z: 8}
@@ -114,3 +115,19 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 816aaeccb1511ca4da9820bd356b9b79, type: 3}
   - {fileID: 2800000, guid: 0a068877b738650468a0e7de30d82d10, type: 3}
   - {fileID: 2800000, guid: 22d1c086faa98d440af420fba41e62a2, type: 3}
+--- !u!54 &-9022546631072920959
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8276666812981333112}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
