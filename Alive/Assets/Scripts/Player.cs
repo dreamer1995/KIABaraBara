@@ -169,7 +169,7 @@ public class Player : MonoBehaviour
     {
         while(true)
         {
-            yield return new WaitForSeconds(0.33f);
+            yield return new WaitForSeconds(3);
             HP += 1;
             FreshHP();
         }

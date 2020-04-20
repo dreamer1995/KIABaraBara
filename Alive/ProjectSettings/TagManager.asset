@@ -10,6 +10,7 @@ TagManager:
   - Astro
   - BlackHole
   - Laser
+  - Arrow
   layers:
   - Default
   - TransparentFX

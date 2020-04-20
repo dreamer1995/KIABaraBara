@@ -33,6 +33,10 @@ public class GameController : MonoBehaviour
     public Texture2D[] background;
     public GameObject place;
     private Material placemt;
+    public GameObject mainMenu;
+    public Button start;
+    public Button end;
+    public Button resume;
     public GameObject[] grids;
     private bool firstFlag;
     private bool stepComplete;
@@ -63,7 +67,8 @@ public class GameController : MonoBehaviour
             { 1,0,0,0,1 },
             { 1,1,0,1,1 }
         };
-        StartCoroutine(GameProcess());
+        start.onClick.AddListener(StartGame);
+        end.onClick.AddListener(EndGame);
         //if (branch == 0) 
         //{
         //    //Time.timeScale = 0;
@@ -282,5 +287,17 @@ public class GameController : MonoBehaviour
         }
         yield return new WaitForSeconds(0);
         Time.timeScale = 0;
+    }
+
+    public void StartGame()
+    {
+        mainMenu.gameObject.SetActive(false);
+        GameObject.FindWithTag("Arrow").SetActive(false);
+        StartCoroutine(GameProcess());
+    }
+
+    public void EndGame()
+    {
+        Application.Quit();
     }
 }
